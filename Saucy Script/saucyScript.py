@@ -16,8 +16,12 @@ https://www.google.com/search?client=firefox-b-1-d&q=how+to+loop+through+columns
 https://stackoverflow.com/questions/28218698/how-to-iterate-over-columns-of-pandas-dataframe-to-run-regression
 
 """
+    
+import saucyScriptClasses
+import random
 
 #Primary Sorting Function
+'''
 def primarySorter(primaryPreference):
     switcher = {
             'Project 1':0,
@@ -37,25 +41,36 @@ def primarySorter(primaryPreference):
             'Project 15':14,
             }
     return switcher.get(primaryPreference, "Invalid Preference")
-#End
-    
-#Class Declarations
-class Person:
-    def __init__(self, name, projectPreferences):
-        self.name = name
-        self.projectPreferences = projectPreferences
+'''
+def preferenceConverter(preference):
+    switcher = {
+            'Project 1':1,
+            'Project 2':2,
+            'Project 3':3,
+            'Project 4':4,
+            'Project 5':5,
+            'Project 6':6,
+            'Project 7':7,
+            'Project 8':8,
+            'Project 9':9,
+            'Project 10':10,
+            'Project 11':11,
+            'Project 12':12,
+            'Project 13':13,
+            'Project 14':14,
+            'Project 15':15,
+            }
+    return switcher.get(preference, "Invalid Preference")
 
-class Project:
-    def __init__(self, name, maxCount):
-        self.name = name
-        self. maxCount = maxCounter;
 #End
+
    
 
 import numpy as np;
 #import tinkter as tk;
 import pandas as pd
 
+'''
 project1 = [];
 project2 = [];
 project3 = [];
@@ -72,24 +87,94 @@ project13 = [];
 project14 = [];
 project15 = [];
 projectList = [project1, project2, project3, project4, project5, project6, project7, project8, project9, project10, project11, project12, project13, project14, project15];
+'''
 
-    
+numProjects = 15;
+projectList = list();
+studentList = list();
+projectPreferences = list();
+
+for currentProjectNum in range(1,16):    
+    #print(currentProjectNum);
+    projectList.append(saucyScriptClasses.Project(currentProjectNum, 10));
+
     
 data = pd.read_csv (r'D:\Documents\GitHub\PetrTogether\Saucy Script\F20_dataModified.csv')   
 df = pd.DataFrame(data, columns= ['Student number','Preference 1', 'Preference 2', 'Preference 3', 'Preference 4', 'Preference 5',])
 
+numStudents = len(df) - 1;
+#print(len(df));
+
+#for currentStudentNum in range(1, len(df) + 1):
+    #print(currentStudentNum);
+    #studentList.append(saucyScriptClasses.Student(currentStudentNum));
+
 #print(df);
 #print(data);
 
-for (index_label, row_series) in df.iterrows():
-    student = row_series.values[0];
-    primaryPreference = row_series.values[1];
-    primaryIndex = primarySorter(primaryPreference);
-    (projectList[primaryIndex]).append(student);
+#Create Student List
+for i, row in df.iterrows():
+    student = row.values[0];
     #print(student);
-    #print('Row Index label : ', index_label)
-    #print('Row Content as Series : ', row_series.values)
+    projectPreferences = (preferenceConverter(row.values[1]), preferenceConverter(row.values[2]), preferenceConverter(row.values[3]), preferenceConverter(row.values[4]), preferenceConverter(row.values[5]));
+    #print(projectPreferences);
+    currentStudent = saucyScriptClasses.Student(student);
+    currentStudent.setPreferences(projectPreferences);
+    #print(currentStudent.getPreferences());
+    #print(currentStudent);
+    studentList.append(currentStudent);
+    #if currentStudent.getName() == 1:
+    #    print(currentStudent.getPreferences);
+
+#Sort into Primary Preferences    
+for currentStudentNum in range(len(df)):
+    currentStudent = studentList[currentStudentNum];
+    preferences = currentStudent.getPreferences();
+    #print(preferences[0]);
+    proj = projectList[preferences[0] - 1];
+    proj.addStudent(currentStudent);
+    print(proj);
+    #if currentStudentNum == 0:
+        #print(preferences);
+
+for i in range(len(projectList)):
+    proj = projectList[i];
+    limit = proj.getMaxCount();
+    currentRoster = proj.getRoster();
+    rosterCount = len(currentRoster);
+    if rosterCount > limit:
+        mvStudent = currentRoster[4];   #randint(0, rosterCount)
+        2ndpref = mvStudent.getPreferences();
+        if (project)
+        print(2ndpref);
+    
+#print(len(projectList));
+'''
+for currentStudentNum in range(1, len(df) + 1):
+    currentStudent = studentList[currentStudentNum];
+    primaryPreference = (currentStudent.getPreferences)[0];
+    print(projectList[primaryPreference - 1]);
+'''
+
+
+'''
+print(studentList);
+print();
 print(projectList);
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 '''
 for index in range(df.shape[1]): 
