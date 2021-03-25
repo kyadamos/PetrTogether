@@ -4,6 +4,8 @@ Created on Fri Feb 26 10:46:50 2021
 
 @author: Shashwat Sparsh
 """
+import random
+
 
 #Class Declarations
 class Student:
@@ -45,15 +47,43 @@ class Project:
     def getRoster(self):
         return self.roster;
     
+    def getRosterCount(self):
+        rosterCount = len(self.getRoster);
+        return rosterCount;
+    
     def __str__(self):
         return str(self.number) + " " + str(self.roster)
 
-
 #End
-
+'''
 #Project Constructor
 def projectConstructor(numProjects):
     for count in range(numProjects):
         intString = str(count);
         projectName = "Project " + intString;
         Project(projectName);
+'''
+        
+#Difference Function
+def emptiestProject(projectList):
+    comparator = 0;
+    for i in range(len(projectList)):
+        currentProject = projectList[i];
+        size = currentProject.getRosterCount;        
+        maxCount = currentProject.getMax;
+        emptySpace = maxCount - size;
+        if (emptySpace > comparator):
+            emptiestProject = currentProject;
+    return emptiestProject;
+
+'''        
+def randomSwap(Project1, projectList):
+    proj1Size = Project1.getRosterCount;
+    studentIndex = random.randint(0,Proj1Size);
+    student.
+'''
+
+def swapToSecond(Student, Project):
+    preferences = student.getPreferences();
+    secondPreference = preferences[1];
+    
