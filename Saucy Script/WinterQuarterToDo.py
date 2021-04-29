@@ -29,3 +29,19 @@ Final Application Concept:
     5. Create Excel/Table with generated rosters
 
 '''    
+
+
+'''
+Affinity Score:
+    Categories: [Graphical, Analysis, Presentation, Documentation, Mechanical Fabrication, Electronic/Programming, Welding, Melal Machining, Wood Working, Power Tools, 3D Printing, Laser Cutter]
+    UAV Forge:  [.07, .07, .07, .07, .1,.1,.05,.05,.1,.1,.1,.1  ]
+    
+    Sample Calculation:
+    
+    Student Skillset = [3, 5, 5, 5, 4, 5, 2, 2, 4, 4, 5, 5]
+    UAV Forge = [.07, .07, .07, .07, .1, .1, .05, .05, .1, .1, .1, .1]    
+    
+    Score = Student Skillset * UAV Forge
+          = [(3 * .07) + ... + (5 * .1)]
+          = 4.1600
+'''
