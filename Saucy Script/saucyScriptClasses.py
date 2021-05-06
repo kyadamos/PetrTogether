@@ -4,29 +4,51 @@ Created on Fri Feb 26 10:46:50 2021
 
 @author: Shashwat Sparsh
 """
-import random
-
+import random;
 
 #Class Declarations
 class Student:
     def __init__(self, name):
         self.name = name
         self.projectPreferences = list()
-        
+        self.skills = list()
+        self.currentAffinityScore = 0;
+        self.affinityScores = list();
+        self.primaryPreference = 1;    
+    
     def getName(self):
         return self.name
     
-    def setProjectPreference1(self, preference1):
-        self.preference1 = preference1
+    def getSkills(self):
+        return self.skills
+    
+    def setSkills(self, skills):
+        self.skills = skills
+    
+    def setPrimaryPreference(self, preference1):
+        self.primaryPreference = preference1
 
     def setPreferences(self, preferences):
         self.projectPreferences = preferences
-          
+    
     def getPreferences(self):
         return self.projectPreferences
+        
+    def getAffinityScores(self):
+        return self.affinityScores
+    
+    def getCurrentAffinityScore(self):
+        return self.currentAffinityScore
+    
+    def setAffinityScore(self, score):
+        self.currentAffinityScore = score
     
     def __str__(self):
-        return str(self.name) + str(self.projectPreferences)
+        return "\n \t" + str(self.name) + " " + str(self.projectPreferences)
+    
+    def __repr__(self):
+        return str(self)
+
 
 class Project:
     def __init__(self, number, maxCount):
@@ -34,9 +56,13 @@ class Project:
         #self.name = name
         self.maxCount = maxCount
         self.roster = list()
+        self.affinityCoefficients = list()
     
     def getMaxCount(self):
         return self.maxCount
+    
+    def setMaxCount(self, count):
+        self.maxCount = count        
     
     def getNumber(self):
         return self.number
@@ -45,24 +71,25 @@ class Project:
         self.roster.append(Student)
     
     def getRoster(self):
-        return self.roster;
+        return self.roster
     
     def getRosterCount(self):
         rosterCount = len(self.getRoster);
-        return rosterCount;
+        return rosterCount
+    
+    def setAffinityCoefficients(self, Coefficients):
+        self.affinityCoefficients = Coefficients
+    
+    def getAffinityCoefficients(self):
+        return self.affinityCoefficients
     
     def __str__(self):
-        return str(self.number) + " " + str(self.roster)
+        return "\n" + str(self.number) + " " + str(self.roster)
+
+    def __repr__(self):
+        return str(self)#str(self.number) + " " + str(self.roster)
 
 #End
-'''
-#Project Constructor
-def projectConstructor(numProjects):
-    for count in range(numProjects):
-        intString = str(count);
-        projectName = "Project " + intString;
-        Project(projectName);
-'''
         
 #Difference Function
 def emptiestProject(projectList):
