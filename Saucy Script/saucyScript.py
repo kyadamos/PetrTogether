@@ -116,6 +116,31 @@ for i in range(len(projectList)):
 #print(studentList[0].getSkills());
 #print(len(projectList[11].getRoster()))
 
+#Set Student Affinity Scores
+
+for h in range(len(studentList)):
+    currentStudent = studentList[h]
+    currentStudentPreferences = currentStudent.getPreferences()
+    skillSet = currentStudent.getSkills()
+    #print(skillSet)
+    affinityScoreArray = list()
+    for i in range(len(currentStudentPreferences)):
+        preference = currentStudentPreferences[i]
+        projectCoeffs = projectList[preference - 1].getAffinityCoefficients()
+        #print(projectCoeffs)
+        affinityScore = sum(np.multiply(projectCoeffs, skillSet))
+        affinityScoreArray.append(affinityScore)
+    #print('')    
+    #print(affinityScoreArray)
+    currentStudent.setAffinityScores(affinityScoreArray)
+    print(currentStudent.getAffinityScores())
+    #print(currentStudent.getAffinityScores())
+
+
+
+
+
+
 '''
 for i in range(len(projectList)):
     currentProject = projectList[i];
@@ -128,8 +153,14 @@ for i in range(len(projectList)):
             print(currentSkillSet)
             print(currentAffinityCoefficients)
             currentAffinityScore = sum(np.multiply(currentAffinityCoefficients, currentSkillSet));
-            currentStudent.setAffinityScore(currentAffinityScore());
+            currentStudent.setAffinityScore(currentAffinityScore);
 #'''
+
+
+
+'''
+
+'''
 
 #Project Student Table = pd.DataFrame
 #print(projectList[0]);
@@ -137,7 +168,7 @@ for i in range(len(projectList)):
 #proj = projectList[0];
 #print(proj);
 
-#'''
+'''
 #skillset = (studentList[0]).getSkills();
 #print(skillset);
 currentProject = projectList[16];
@@ -149,7 +180,7 @@ currentAffinityScore = sum(np.multiply(currentAffinityCoefficients, currentSkill
 #print(currentAffinityScore);
 currentStudent.setAffinityScore(currentAffinityScore);
 print(currentStudent.getCurrentAffinityScore());
-#'''
+'''
 
 
 ''' Framework For Automated Assignment and Comparison

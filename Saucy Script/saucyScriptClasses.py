@@ -37,6 +37,9 @@ class Student:
     def getAffinityScores(self):
         return self.affinityScores
     
+    def setAffinityScores(self,affinityScores):
+        self.affinityScores = affinityScores
+    
     def getCurrentAffinityScore(self):
         return self.currentAffinityScore
     
@@ -44,7 +47,7 @@ class Student:
         self.currentAffinityScore = score
     
     def __str__(self):
-        return "\n \t" + str(self.name) + " " + str(self.projectPreferences)
+        return "\n \t" + str(self.name) + " " + str(self.projectPreferences) + " " + str(self.currentAffinityScore)
     
     def __repr__(self):
         return str(self)
