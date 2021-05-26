@@ -61,24 +61,31 @@ class Project:
         self.roster = list()
         self.affinityCoefficients = list()
     
+    def getNumber(self):
+        return self.number
+    
     def getMaxCount(self):
         return self.maxCount
     
     def setMaxCount(self, count):
         self.maxCount = count        
     
-    def getNumber(self):
-        return self.number
-    
     def addStudent(self, Student):
         self.roster.append(Student)
+    
+    def removeStudent(self, Student):
+        self.roster.remove(Student)
     
     def getRoster(self):
         return self.roster
     
     def getRosterCount(self):
-        rosterCount = len(self.getRoster);
+        rosterCount = len(self.getRoster)
         return rosterCount
+    
+    def getSpace(self):
+        space = self.getRosterCount() - self.getMaxCount()
+        return space
     
     def setAffinityCoefficients(self, Coefficients):
         self.affinityCoefficients = Coefficients

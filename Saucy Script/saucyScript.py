@@ -129,6 +129,7 @@ for h in range(len(studentList)):
         projectCoeffs = projectList[preference - 1].getAffinityCoefficients()
         #print(projectCoeffs)
         affinityScore = sum(np.multiply(projectCoeffs, skillSet))
+        affinityScore = np.around(affinityScore, 2)
         affinityScoreArray.append(affinityScore)
     #print('')    
     #print(affinityScoreArray)
@@ -137,9 +138,26 @@ for h in range(len(studentList)):
     #print(currentStudent.getAffinityScores())
 
 
-
-
-
+for a in range(len(projectList)):
+    count = 0
+    #Determine Emptiest Project
+    for b in range(len(projectList)):
+        initial_space = projectList[b].getSpace()
+        if ( (b+1)<=len(projectList) and (initial_space > projectList[b+1].getSpace()) ):
+            emptiestProj = projectList[b]
+    if (projectList[a].getSpace() < 0):
+        currentRoster = projectList[a].getRoster()
+        for c in range(len(currentRoster)):
+            currentStudent = currentRoster[c]
+            currentPref = currentStudent.getPreferences()
+            for d in range(len(currentPref)):
+                if (currentPref[d] == emptiestProj.getNumber()):
+                    emptiestProj.addStudent(currentStudent)
+                    projectList[a].removeStudent(currentStudent)
+    count = count + 1
+    if (count > 2):
+        break;
+    
 
 '''
 for i in range(len(projectList)):
