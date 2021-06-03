@@ -19,14 +19,16 @@ https://stackoverflow.com/questions/28218698/how-to-iterate-over-columns-of-pand
 """
     
 import saucyScriptClasses
+from saucyScriptClasses import findEmptiestProject
 import numpy as np;
 #import tinkter as tk;
 import pandas as pd;
 
 #import random
 
-#Primary Sorting Function
 
+
+#Primary Sorting Function
 def preferenceConverter(preference):
     switcher = {
             'Project 1':1,
@@ -134,30 +136,28 @@ for h in range(len(studentList)):
     #print('')    
     #print(affinityScoreArray)
     currentStudent.setAffinityScores(affinityScoreArray)
-    print(currentStudent.getAffinityScores())
+    #print(currentStudent.getAffinityScores())
     #print(currentStudent.getAffinityScores())
 
 
 for a in range(len(projectList)):
     count = 0
-    #Determine Emptiest Project
-    for b in range(len(projectList)):
-        initial_space = projectList[b].getSpace()
-        if ( (b+1)<=len(projectList) and (initial_space > projectList[b+1].getSpace()) ):
-            emptiestProj = projectList[b]
+    emptiestProject = findEmptiestProject(projectList)
     if (projectList[a].getSpace() < 0):
-        currentRoster = projectList[a].getRoster()
-        for c in range(len(currentRoster)):
-            currentStudent = currentRoster[c]
-            currentPref = currentStudent.getPreferences()
-            for d in range(len(currentPref)):
-                if (currentPref[d] == emptiestProj.getNumber()):
-                    emptiestProj.addStudent(currentStudent)
-                    projectList[a].removeStudent(currentStudent)
+        roster = projectList[a].getRoster()
+        for b, student in enumerate(roster):
+            preferencesList = student.getPreferences()
+            for c, singlePreference in enumerate(preferencesList):
+                if (singlePreference == emptiestProject.getNumber()):
+                    emptiestProject.addStudent(student)
+                    projectList[a].removeStudent(student)
     count = count + 1
     if (count > 2):
         break;
     
+
+
+
 
 '''
 for i in range(len(projectList)):
@@ -175,16 +175,6 @@ for i in range(len(projectList)):
 #'''
 
 
-
-'''
-
-'''
-
-#Project Student Table = pd.DataFrame
-#print(projectList[0]);
-#print(studentList[0]);
-#proj = projectList[0];
-#print(proj);
 
 '''
 #skillset = (studentList[0]).getSkills();
@@ -218,26 +208,6 @@ Project Loop:
         ProjectList[secondaryPref - 1].append(currentMoveStudent)
         
 '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 '''

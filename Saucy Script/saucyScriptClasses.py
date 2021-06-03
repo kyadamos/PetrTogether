@@ -80,7 +80,7 @@ class Project:
         return self.roster
     
     def getRosterCount(self):
-        rosterCount = len(self.getRoster)
+        rosterCount = len(self.getRoster())
         return rosterCount
     
     def getSpace(self):
@@ -101,7 +101,28 @@ class Project:
 
 #End
         
-#Difference Function
+def findEmptiestProject(projectList):
+    projectListSpace = list()
+    for i, currentProject in enumerate(projectList):
+        projectListSpace.append(currentProject.getSpace())
+    spaceIndex = projectListSpace.index(max(projectListSpace))
+    projectIndex = spaceIndex
+    emptiestProject = projectList[projectIndex]
+    return emptiestProject
+        
+'''        
+def randomSwap(Project1, projectList):
+    proj1Size = Project1.getRosterCount;
+    studentIndex = random.randint(0,Proj1Size);
+    student.
+'''
+
+def swapToSecond(Student, Project):
+    preferences = Student.getPreferences();
+    secondPreference = preferences[1];
+    
+    
+'''#Difference Function
 def emptiestProject(projectList):
     comparator = 0;
     for i in range(len(projectList)):
@@ -111,16 +132,6 @@ def emptiestProject(projectList):
         emptySpace = maxCount - size;
         if (emptySpace > comparator):
             emptiestProject = currentProject;
-    return emptiestProject;
-
-'''        
-def randomSwap(Project1, projectList):
-    proj1Size = Project1.getRosterCount;
-    studentIndex = random.randint(0,Proj1Size);
-    student.
+    return emptiestProject
 '''
-
-def swapToSecond(Student, Project):
-    preferences = student.getPreferences();
-    secondPreference = preferences[1];
     
