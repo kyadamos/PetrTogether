@@ -57,7 +57,7 @@ studentList = list();
 projectPreferences = list();
 
 #Read Student Data  
-data = pd.read_csv (r'.\F20_Test.csv')   
+data = pd.read_csv (r'./F20_Test.csv')   
 df = pd.DataFrame(data, columns= ['Student number','Preference 1', 'Preference 2', 
                                   'Preference 3', 'Preference 4', 'Preference 5', 
                                   'Mechanical Skills', 'Electronics', 'Welding',
@@ -66,7 +66,7 @@ df = pd.DataFrame(data, columns= ['Student number','Preference 1', 'Preference 2
 #print(df);
 
 #Read Project MaxCount Data
-maxCountData = pd.read_csv(r'.\Team_size_constraints.csv')
+maxCountData = pd.read_csv(r'./Team_size_constraints.csv')
 maxCountDF = pd.DataFrame(maxCountData, columns = ['Project Number','F20','W21'])
 #print(maxCountDF)
 for currentProjectNum, row in maxCountDF.iterrows():
@@ -140,21 +140,25 @@ for h in range(len(studentList)):
     #print(currentStudent.getAffinityScores())
 
 
-for a in range(len(projectList)):
-    count = 0
+
+
+
+
+for projNum in range(len(projectList)):
+    #count = 0
     emptiestProject = findEmptiestProject(projectList)
-    if (projectList[a].getSpace() < 0):
-        roster = projectList[a].getRoster()
-        for b, student in enumerate(roster):
+    if (projectList[projNum].getSpace() < 0):
+        roster = projectList[projNum].getRoster()
+        for s, student in enumerate(roster):
             preferencesList = student.getPreferences()
-            for c, singlePreference in enumerate(preferencesList):
+            for pref, singlePreference in enumerate(preferencesList):
                 if (singlePreference == emptiestProject.getNumber()):
                     emptiestProject.addStudent(student)
-                    projectList[a].removeStudent(student)
-    count = count + 1
-    if (count > 2):
-        break;
-    
+                    projectList[projNum].removeStudent(student)
+    #count = count + 1
+    #if (count > 2):
+    #    break;
+
 
 
 

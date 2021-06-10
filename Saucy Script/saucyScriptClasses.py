@@ -84,7 +84,7 @@ class Project:
         return rosterCount
     
     def getSpace(self):
-        space = self.getRosterCount() - self.getMaxCount()
+        space = self.getMaxCount() - self.getRosterCount()
         return space
     
     def setAffinityCoefficients(self, Coefficients):
