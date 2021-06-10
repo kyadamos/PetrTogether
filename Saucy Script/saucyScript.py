@@ -143,11 +143,12 @@ for h in range(len(studentList)):
 
 
 
-
 for projNum in range(len(projectList)):
+    print(projNum)
     #count = 0
     emptiestProject = findEmptiestProject(projectList)
-    if (projectList[projNum].getSpace() < 0):
+    while(projectList[projNum].getSpace() < 0):
+    #if (projectList[projNum].getSpace() < 0):
         roster = projectList[projNum].getRoster()
         for s, student in enumerate(roster):
             preferencesList = student.getPreferences()
